@@ -2,6 +2,15 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+
 import  java.util.UUID;
 
 
@@ -11,10 +20,18 @@ public class Trade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String fromCurrency;
+    @NotNull(message = "fromCurrency is required")
+   private String fromCurrency;
+
+    @NotNull(message = "toCurrency is required")
     private String toCurrency;
+
+    @NotNull(message = "amount is required")
     private Double amount;
+
+    @NotNull(message = "rate is required")
     private Double rate;
+
 
     private String uid; // Поле uid
 
