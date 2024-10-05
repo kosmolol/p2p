@@ -10,25 +10,21 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-
+//Рест контроллер
 @RestController
 @RequestMapping("/api/trades")
 public class ExchangeController {
 
     @Autowired
     private TradeRepository tradeRepository;
-
+// Получение всех ордеров
     @GetMapping
     public List<Trade> getAllTrades() {
         return tradeRepository.findAll();
     }
 
-  /*  @PostMapping
-    public ResponseEntity<String> createTrade(@RequestBody Trade trade) {
-        Trade savedTrade = tradeRepository.save(trade);
-        return ResponseEntity.ok(savedTrade.getUid()); // Возвращаем только uid
-    } */
 
+// Создание ордера
     @PostMapping
     public ResponseEntity<Map<String, String>> createTrade(@RequestBody Trade trade) {
         Trade savedTrade = tradeRepository.save(trade);
@@ -37,7 +33,7 @@ public class ExchangeController {
         return ResponseEntity.ok(response); // Возвращаем ответ в формате JSON
     }
 
-
+// Рес метод получения ордера по УИД
     @GetMapping("/{uid}")
     public ResponseEntity<Trade> getTradeByUid(@PathVariable String uid) {
         Trade trade = tradeRepository.findByUid(uid); // Предполагается, что вы добавили этот метод в TradeRepository

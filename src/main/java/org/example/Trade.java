@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import  java.util.UUID;
 
 
-
+// Класс трейда
 @Entity
 public class Trade {
     @Id
