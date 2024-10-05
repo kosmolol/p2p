@@ -1,0 +1,5 @@
+org/example/P2PApplication.class
+org/example/Main.class
+org/example/TradeRepository.class
+org/example/Trade.class
+org/example/ExchangeController.class
